@@ -14,6 +14,88 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 
+
+<!-- Load tsParticles library -->
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
+
+<!-- Initialize tsParticles -->
+<script>
+  tsParticles.load("particles-js", {
+    background: {
+      color: {
+        value: "#0d0d0d"
+      }
+    },
+    fpsLimit: 60,
+    interactivity: {
+      events: {
+        onHover: {
+          enable: true,
+          mode: "repulse"
+        },
+        onClick: {
+          enable: true,
+          mode: "push"
+        },
+        resize: true
+      },
+      modes: {
+        push: {
+          quantity: 4
+        },
+        repulse: {
+          distance: 100,
+          duration: 0.4
+        }
+      }
+    },
+    particles: {
+      color: {
+        value: "#00fffc"
+      },
+      links: {
+        color: "#00fffc",
+        distance: 150,
+        enable: true,
+        opacity: 0.5,
+        width: 1
+      },
+      collisions: {
+        enable: true
+      },
+      move: {
+        direction: "none",
+        enable: true,
+        outModes: {
+          default: "bounce"
+        },
+        random: false,
+        speed: 2,
+        straight: false
+      },
+      number: {
+        density: {
+          enable: true,
+          area: 800
+        },
+        value: 80
+      },
+      opacity: {
+        value: 0.5
+      },
+      shape: {
+        type: "circle"
+      },
+      size: {
+        value: { min: 1, max: 5 }
+      }
+    },
+    detectRetina: true
+  });
+</script>
+
+
+
 <body> <!-- - #PARTICLE CONTAINER -->
     <div id="particles-js"></div><!-- - #MAIN -->
     <main> <!-- - #SIDEBAR -->
