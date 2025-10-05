@@ -1,18 +1,10 @@
+// // next.config.mjs
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
-  // basePath: '/jaisankar-portfolio',
-  // assetPrefix: '/jaisankar-portfolio/',
-  trailingSlash: true,
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  output: 'export',
   images: {
     unoptimized: true,
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;
