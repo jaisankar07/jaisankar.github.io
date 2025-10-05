@@ -13,13 +13,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Checkout the repo
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2. Setup Node.js and pnpm
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9  # or whichever version you use
+          version: 9
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -27,14 +29,22 @@ jobs:
           node-version: 20
           cache: 'pnpm'
 
+      # 3. Install dependencies
       - name: Install dependencies
         run: pnpm install
 
+      # 4. Clean previous build outputs
+      - name: Clean old builds
+        run: rm -rf .next out
+
+      # 5. Build Next.js project
       - name: Build project
         run: pnpm build
 
+      # 6. Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out
+          publish_branch: gh-pages
