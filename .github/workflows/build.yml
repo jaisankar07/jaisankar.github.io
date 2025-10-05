@@ -1,19 +1,26 @@
-name: Deploy to GitHub Pages
+name: Deploy Next.js App to GitHub Pages
+
 on:
   push:
     branches:
-      - fature/resume
+      - feature/resume  # Deploy whenever main branch updates
+
+permissions:
+  contents: write  # Required for gh-pages branch updates
 
 jobs:
-  build-deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
+          cache: 'pnpm'
 
       - name: Install pnpm
         run: npm install -g pnpm
@@ -21,10 +28,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build project
+      - name: Build the project
         run: pnpm build
 
-      - name: Deploy
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
